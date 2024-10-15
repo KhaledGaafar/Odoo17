@@ -1,4 +1,4 @@
-odoo.define('digizilla.hide_create_button', function (require) {
+odoo.define('digizilla.button', function (require) {
     "use strict";
 
     var FormController = require('web.FormController');
