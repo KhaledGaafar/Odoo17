@@ -1,0 +1,48 @@
+<odoo>
+    <template id="report_digizilla">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <h2>Digizilla Report</h2>
+                <table class="table table-sm table-hover">
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Country</th>
+                        <th>Joining Date</th>
+                        <th>Tags</th>
+                        <th>Customers</th>
+                        <th>Company</th>
+                        <th>Notes</th>
+                        <th>Comments</th>
+                    </tr>
+                    <t t-foreach="docs" t-as="doc">
+                        <tr>
+                            <td><span t-field="doc.name"/></td>
+                            <td><span t-field="doc.gender"/></td>
+                            <td><span t-field="doc.country"/></td>
+                            <td><span t-field="doc.joining_date"/></td>
+                            <td><span t-foreach="doc.tags" t-as="tag"><span t-field="tag.name"/> </span></td>
+                            <td><span t-foreach="doc.customers" t-as="customer"><span t-field="customer.name"/> </span></td>
+                            <td><span t-field="doc.company.name"/></td>
+                            <td><span t-field="doc.notes"/></td>
+                            <td><span t-field="doc.comments"/></td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+        </t>
+    </template>
+
+
+
+    <report
+        id="action_report_digizilla"
+        model="digizilla.model"
+        string="Digizilla Report"
+        report_type="qweb-pdf"
+        name="my_module.report_digizilla"
+        file="my_module.report_digizilla"
+        print_report_name="(object.name or '').replace('/', '')"
+    />
+</odoo>
+

@@ -1,0 +1,78 @@
+<odoo>
+    <record id="view_form_digizilla" model="ir.ui.view">
+        <field name="name">digizilla.form</field>
+        <field name="model">digizilla.model</field>
+        <field name="arch" type="xml">
+            <form string="Digizilla">
+               <header>
+                    <button name="%(action_report_digizilla)d" type="action" string="Print Report" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="gender"/>
+                        <field name="country"/>
+                        <field name="joining_date"/>
+                        <field name="tags"/>
+                        <field name="customers"/>
+                        <field name="company"/>
+                    </group>
+                     <xpath expr="//sheet/notebook/page[@string='Notes']" position="after">
+                        <script type="text/javascript" src="/my_module/static/src/js/button.js"/>
+                    </xpath>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                        <page string="Comments">
+                            <field name="comments"/>
+                        </page>
+                        <page string="Log">
+                            <field name="log_ids">
+                                <tree>
+                                    <field name="field_name"/>
+                                    <field name="old_value"/>
+                                    <field name="new_value"/>
+                                    <field name="change_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_digizilla" model="ir.ui.view">
+        <field name="name">digizilla.tree</field>
+        <field name="model">digizilla.model</field>
+        <field name="arch" type="xml">
+            <tree string="Digizilla">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="country"/>
+                <field name="joining_date"/>
+                <field name="company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_kanban_digizilla" model="ir.ui.view">
+        <field name="name">digizilla.kanban</field>
+        <field name="model">digizilla.model</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div><strong><field name="name"/></strong></div>
+                            <div><field name="gender"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
+
